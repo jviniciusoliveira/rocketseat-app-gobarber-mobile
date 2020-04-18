@@ -8,7 +8,7 @@ const Input = forwardRef(({style, icon, ...rest}, ref) => {
   return (
     <Container style={style}>
       {icon && <Icon name={icon} size={20} color="rgba(255, 255, 255, 0.6)" />}
-      <TextInput {...rest} />
+      <TextInput {...rest} ref={ref} />
     </Container>
   );
 });
