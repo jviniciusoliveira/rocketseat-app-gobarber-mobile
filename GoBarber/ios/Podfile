@@ -79,6 +79,8 @@ target 'GoBarber' do
 
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'GoBarberTests' do
     inherit! :complete
     # Pods for testing
