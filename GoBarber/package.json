@@ -10,15 +10,22 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^5.2.7",
     "react": "16.11.0",
-    "react-native": "0.62.2"
+    "react-native": "0.62.2",
+    "react-native-gesture-handler": "^1.6.1",
+    "react-native-linear-gradient": "^2.5.6",
+    "react-navigation": "^4.3.7",
+    "styled-components": "^5.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/runtime": "^7.9.2",
     "@react-native-community/eslint-config": "^1.0.0",
     "babel-jest": "^25.3.0",
+    "babel-plugin-root-import": "^6.5.0",
     "eslint": "^6.8.0",
+    "eslint-import-resolver-babel-plugin-root-import": "^1.1.1",
     "jest": "^25.3.0",
     "metro-react-native-babel-preset": "^0.59.0",
     "react-test-renderer": "16.11.0"
