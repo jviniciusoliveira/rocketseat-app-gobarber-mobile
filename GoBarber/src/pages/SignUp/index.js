@@ -1,9 +1,10 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {Image} from 'react-native';
 
 import logo from '~/assets/logo.png';
-
 import Background from '~/components/Background';
+import {signUpRequest} from '~/store/modules/auth/actions';
 
 import {
   Container,
@@ -15,10 +16,19 @@ import {
 } from './styles';
 
 const SignUp = ({navigation}) => {
+  const dispatch = useDispatch();
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  function handleSubmit() {}
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const loading = useSelector((state) => state.auth.loading);
+
+  function handleSubmit() {
+    dispatch(signUpRequest(name, email, password));
+  }
 
   return (
     <Background>
@@ -34,6 +44,8 @@ const SignUp = ({navigation}) => {
             returnKeyType="next"
             onSubmitEditing={() => emailRef.current.focus()}
             blurOnSubmit={false}
+            value={name}
+            onChangeText={setName}
           />
 
           <FormInput
@@ -46,6 +58,8 @@ const SignUp = ({navigation}) => {
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
             blurOnSubmit={false}
+            value={email}
+            onChangeText={setEmail}
           />
 
           <FormInput
@@ -54,10 +68,14 @@ const SignUp = ({navigation}) => {
             placeholder="Digite sua senha"
             ref={passwordRef}
             returnKeyType="send"
+            value={password}
+            onChangeText={setPassword}
             onSubmitEditing={handleSubmit}
           />
 
-          <SubmitButton onPress={handleSubmit}>Enviar</SubmitButton>
+          <SubmitButton loading={loading} onPress={handleSubmit}>
+            Enviar
+          </SubmitButton>
         </Form>
 
         <SignLink

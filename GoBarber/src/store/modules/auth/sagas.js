@@ -24,7 +24,7 @@ export function* signIn({payload}) {
       'Erro no login',
       'Falha no login. Verifique seus dados e tente novamente.',
     );
-    yield pu(signFailure());
+    yield put(signFailure());
   }
 }
 
