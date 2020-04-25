@@ -18,6 +18,8 @@ export function* signIn({payload}) {
       );
     }
 
+    api.defaults.headers.Authorization = `Baerer ${token}`;
+
     yield put(signInSuccess(token, user));
   } catch (error) {
     Alert.alert(
@@ -42,7 +44,18 @@ export function* signUp({payload}) {
   }
 }
 
+export function rehydrate({payload}) {
+  if (!payload) return;
+
+  const {token} = payload.auth;
+
+  if (token) {
+    api.defaults.headers.Authorization = `Baerer ${token}`;
+  }
+}
+
 export default all([
+  takeLatest('persist/REHYDRATE', rehydrate),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
   takeLatest('@auth/SIGN_UP_REQUEST', signUp),
 ]);
