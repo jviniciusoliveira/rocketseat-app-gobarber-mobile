@@ -89,6 +89,8 @@ target 'GoBarber' do
 
   pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
 
+  pod 'RNDateTimePicker', :path => '../node_modules/@react-native-community/datetimepicker'
+
   target 'GoBarberTests' do
     inherit! :complete
     # Pods for testing
